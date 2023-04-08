@@ -26,7 +26,7 @@
 
     // OPEN SIDE  MENU 
     $('.menuBtn').on('click', function () {
-        $('.navMenu').toggleClass('show');
+        $('.headerNav').toggleClass('show');
         $('.bodyOverlay').addClass('show');
         setTimeout(function () {
             $('body').addClass('stopScroll');
@@ -36,7 +36,7 @@
     // CLOSE SIDE MENU 
     $('.bodyOverlay').on('click', function () {
         $(this).removeClass('show');
-        $('.navMenu').removeClass('show');
+        $('.headerNav').removeClass('show');
         $('body').removeClass('stopScroll');
     });
 
@@ -76,15 +76,16 @@
         dots: false,
         responsive:{
             0:{
-                items:1
+                items:1,
+                stagePadding: 20
             },
             600:{
                 items:2,
-                stagePadding: 50,
+                stagePadding: 50
             },
             1000:{
                 items:2,
-                stagePadding: 250,
+                stagePadding: 250
             }
         }
     });
