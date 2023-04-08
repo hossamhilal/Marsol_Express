@@ -871,6 +871,10 @@ a {
     .services .col-6:nth-child(even) .service::after {
         display: none;
     }
+
+    .services .col-6:nth-child(5n) .service::after {
+        display: block;
+    }
 }
 
 @media screen and (max-width:768px) {
