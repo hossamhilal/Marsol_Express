@@ -114,6 +114,88 @@
     });
 
 
+    $('.owl-product').owlCarousel({
+        rtl:  RTL,
+        loop:true,
+        autoplay: true,
+        margin:0,
+        nav:true,
+        navText: ['<i class="icofont-rounded-left"></i>' ,'<i class="icofont-rounded-right"></i>'],
+        dots: false,
+        responsive:{
+            0:{
+                items:1
+            },
+            600:{
+                items:1
+            },
+            1000:{
+                items:1
+            }
+        }
+    });
+
+
+    $('.owl-products').owlCarousel({
+        rtl:  RTL,
+        loop:true,
+        autoplay: true,
+        margin:30,
+        nav:false,
+        navText: ['<i class="icofont-rounded-left"></i>' ,'<i class="icofont-rounded-right"></i>'],
+        dots: false,
+        responsive:{
+            0:{
+                items:1,
+                stagePadding: 20
+            },
+            600:{
+                items:2,
+                stagePadding: 50
+            },
+            1000:{
+                items:4,
+                stagePadding: 100
+            }
+        }
+    });
+
+
+    // Add To Favourite
+    $('.addToFav').on('click', function (e) {
+        e.preventDefault();
+        $(this).toggleClass('favourited');
+    });
+
+
+    // Collapse
+    $('.page-side-filter-head').on('click', function () {
+        $(this).parent().find('.page-side-filter-boody').toggle();
+        $(this).find('i').toggleClass('icon-rotate');
+    });
+
+
+    // Change Display 
+    $('.display-btn').on('click', function () {
+        $('.display-btn').removeClass('active');
+        $(this).addClass('active');
+        if($(this).hasClass('grid-btn')){
+            $('.grid-col').removeClass('list-col');
+        }
+        else $('.grid-col').addClass('list-col');
+    });
+
+     
+    // Cart Count
+    $('.count-btn').on('click', function () {
+        let number = $('.count-number').val();
+        if($(this).hasClass('plus-btn')){
+            number++;
+        }
+        else number == 0 ? '' : number--;
+        $('.count-number').val(number);
+    });
+
     // Count Down 
     let countDOwn = document.getElementsByClassName('count-down');
     if(countDOwn){
@@ -183,6 +265,17 @@
             countTimer = setInterval(countDown, 1000);
         });
     }
+
+    // tABS 
+    $('.tab-item').click(function(e){  
+        e.preventDefault();
+        let Tab_ID = '#'+$(this).attr('href');
+        $('.tab-item').removeClass('active');
+        $(this).addClass('active');
+        $('.tab-content').removeClass('show');
+        $(Tab_ID).addClass('show');
+    });
+
 
     // init WOW Js
     new WOW().init();
