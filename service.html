@@ -100,31 +100,30 @@
                             <div class="field icon-field">
                                 <label class="field-label"> تفاصيل طلبك </label>
                                 <textarea  cols="30" rows="6" class="field-control" placeholder="الرجاء ادخال تفاصيل الطلب"></textarea>
-                                <div class="field-icon upload-images"> <img src="images/icon-camera.svg" alt="upload" class="img-fluid"> </div>
+                                <div class="field-icon upload-images"> <input id="files" type="file" accept="image/*" multiple> <img src="images/icon-camera.svg" alt="upload" class="img-fluid"> </div>
                             </div>
                             <div class="uploaded-images">
-                                <ul>
-                                    <li class="uploaded-image">
-                                        <img src="images/img-9.jpeg" alt="img" class="img-fluid w-100 h-100">
-                                        <div class="delete-image"> <i class="icofont-close-line"></i> </div>
-                                    </li>
-                                </ul>
+                                <ul class="uploaded-image-list"></ul>
                             </div>
                         </div>
                         <div class="col-12 col-sm-6">
                             <div class="field icon-field">
                                 <label class="field-label"> موقع الاستلام </label>
-                                <input class="field-control" placeholder="برجاء تحديد موقه الاستلام"></input>
-                                <div class="field-icon open-map"> <img src="images/icon-map.svg" alt="upload" class="img-fluid"> </div>
+                                <input class="field-control" placeholder="برجاء تحديد موقه الاستلام" id="send-location"></input>
+                                <div class="field-icon open-map" id="open-send-map" data-map="send-map"> <img src="images/icon-map.svg" alt="upload" class="img-fluid"> </div>
                             </div>
+                            <div class="map" id="send-map"></div>
                         </div>
+
                         <div class="col-12 col-sm-6">
                             <div class="field icon-field">
                                 <label class="field-label"> موقع التسليم </label>
-                                <input class="field-control" placeholder="برجاء تحديد موقع التسليم"></input>
-                                <div class="field-icon open-map"> <img src="images/icon-map.svg" alt="upload" class="img-fluid"> </div>
+                                <input class="field-control" placeholder="برجاء تحديد موقع التسليم" id="recieve-location"></input>
+                                <div class="field-icon open-map" id="open-recieve-map" data-map="recieve-map"> <img src="images/icon-map.svg" alt="upload" class="img-fluid"> </div>
                             </div>
+                            <div class="map" id="recieve-map"></div>
                         </div>
+
                         <div class="col-12">
                             <div class="field">
                                 <label class="field-label"> طريقة الدفع </label>
@@ -163,10 +162,10 @@
                         </div>
 
                         <div class="col-12">
-                            <div class="field icon-field">
+                            <div class="field button-field">
                                 <label class="field-label"> كوبون الخصم </label>
                                 <input class="field-control" placeholder="الرجاء ادخال كوبون الخصم"></input>
-                                <div class="filed-button apply-coupon"> <span> </span> <i class="icofont-check-alt"></i> </div>
+                                <div class="field-button apply-coupon"> <span> تطبيق </span> <i class="icofont-check-alt"></i> </div>
                             </div>
                             <div class="discount-total">
                                 <h6> السعر بعد الخصم : <span> 1754,00 </span> رس </h6>
@@ -174,11 +173,26 @@
                         </div>
 
                         <div class="col-12">
-                            <button class="btn btn-primary" type="submit"> <span> تاكيد الطلب </span> <img src="images/icon-left.svg" alt="icon"></button>
+                            <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#successModal"> <span> تاكيد الطلب </span> <img src="images/icon-left-white.svg" alt="icon"></button>
                         </div>
                     </div>       
                 </div>
             </form>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade custom-modal" id="successModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-vector">
+                    <img src="images/icon-home.svg" alt="icon" class="img-fluid">
+                </div>
+                <h2> تهانينا ! لقد تم إرسال طلبك بنجاح </h2>
+                <p> سوف يقوم منادريب التوصيل بالقيام بعروض اسعار ويمكنك اختيار العرض المناسب </p>
+
+                <button class="btn btn-primary" type="button" data-dismiss="modal" aria-label="Close"> <span> حسنا ! </span></button>
+            </div>
         </div>
     </div>
 
@@ -355,6 +369,90 @@
         </div>
     </div>
 
+    <script>
+
+        // let btn = document.getElementById('open-send-map');
+        document.getElementById('open-send-map').addEventListener('click', function(){
+            let mapID = '#'+$(this).data('map');
+            $(mapID).toggle();
+        },false);
+
+        let btn_2 = document.getElementById('open-recieve-map');
+        btn_2.addEventListener('click', function(){
+            let mapID = '#'+$(this).data('map');
+            $(mapID).toggle();
+        },false);
+
+        function initMap() {
+
+            let LatLng_1 = new google.maps.LatLng(23.8859, 45.0792);
+            // let LatLng_2 = new google.maps.LatLng(23.8859, 45.0792);
+
+            map   = new google.maps.Map(document.getElementById('send-map'), { zoom: 13});
+            map_2 = new google.maps.Map(document.getElementById('recieve-map'), { zoom: 13});
+
+            let position;
+            let position_2;
+
+            var marker;
+            var marker_2;
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    position = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+
+                    position_2 = position;
+
+                    map.setCenter(position);
+                    map_2.setCenter(position_2);
+
+                    marker = new google.maps.Marker({
+                        position: position,
+                        map: map
+                    });
+
+                    marker_2 = new google.maps.Marker({
+                        position: position_2,
+                        map: map_2
+                    });
+
+
+                }, function() {
+                    map.setCenter(LatLng_1);
+                    map_2.setCenter(LatLng_2);
+                });
+            }
+            else {
+                map.setCenter(LatLng_1);
+                map_2.setCenter(LatLng_2);
+            }
+
+            // Configure the click listener.
+            map.addListener("click", (mapsMouseEvent) => {
+                position = {
+                    lat:  mapsMouseEvent.latLng.lat(),
+                    lng: mapsMouseEvent.latLng.lng()
+                };
+                document.getElementById('send-location').value = mapsMouseEvent.latLng.lat() , mapsMouseEvent.latLng.lng();
+                marker.setPosition(position);
+            });
+
+            // Configure the click listener.
+            map_2.addListener("click", (mapsMouseEvent) => {
+                position_2 = {
+                    lat:  mapsMouseEvent.latLng.lat(),
+                    lng: mapsMouseEvent.latLng.lng()
+                };
+                document.getElementById('recieve-location').value = mapsMouseEvent.latLng.lat() , mapsMouseEvent.latLng.lng();
+                marker_2.setPosition(position_2);
+            });
+            
+        }  
+    </script>
+
 
     <!-- JS -->
     <script src="js/jquery-3.2.1.min.js"></script>
@@ -362,6 +460,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="plugins/owlCarousel/owl.carousel.min.js"></script>
     <script src="plugins/animation/wow.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOpPAuGzuOlz-iIlF46dskF-lq1duFLDE&callback=initMap" async></script>
     <script src="js/custom.js"></script>
 
 </body>

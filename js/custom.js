@@ -266,7 +266,7 @@
         });
     }
 
-    // tABS 
+    // Tabs  
     $('.tab-item').click(function(e){  
         e.preventDefault();
         let Tab_ID = '#'+$(this).attr('href');
@@ -275,6 +275,38 @@
         $('.tab-content').removeClass('show');
         $(Tab_ID).addClass('show');
     });
+
+
+    // Apply Coupon
+    $('.apply-coupon').on('click', function () {
+        $(this).addClass('success');
+        $('.discount-total').show();
+    });
+
+    // Upload Files 
+    const preview = (file) => {
+        const fileReader = new FileReader();
+        fileReader.onload = () => {
+            let template = `<li class="uploaded-image">
+                                <img src="${fileReader.result}" alt="${fileReader.name}" class="img-fluid w-100 h-100">
+                                <div class="delete-image"> <i class="icofont-close-line"></i> </div>
+                            </li>`;
+            document.querySelector('.uploaded-image-list').innerHTML +=template;
+
+            $('.delete-image').on('click', function(){
+                $(this).parent().remove();
+            });
+        };
+        fileReader.readAsDataURL(file);
+    };
+      
+    $('.upload-images').on('change', (ev) => {
+        if (!ev.target.files) return; 
+        [...ev.target.files].forEach(preview);
+    });
+
+
+    
 
 
     // init WOW Js

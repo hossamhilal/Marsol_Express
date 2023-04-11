@@ -72,13 +72,13 @@ a {
     text-decoration: none !important;
 }
 
-button ,
+button,
 button:hover,
 button:focus,
-button:active ,
+button:active,
 button.focus,
-.btn.focus, 
-.btn:focus ,
+.btn.focus,
+.btn:focus,
 .btn:active {
     outline: 0;
     box-shadow: none;
@@ -146,9 +146,15 @@ button.focus,
 }
 
 .btn:hover span,
-.btn:hover i {
+.btn:hover i ,
+.btn:hover img {
     position: relative;
     z-index: 1;
+}
+
+.btn img {
+    display: inline-flex;
+    margin-inline-start: 10px;
 }
 
 .btn i {
@@ -954,7 +960,7 @@ button.focus,
     margin-bottom: 30px;
 }
 
-.home-block img {
+.home-block > img {
     margin-bottom: 30px;
 }
 
@@ -2514,7 +2520,7 @@ button.focus,
     margin-bottom: 20px;
 }
 
-.tabs-content li ,
+.tabs-content li,
 .tabs-content p {
     position: relative;
     font-size: 15px;
@@ -2639,7 +2645,7 @@ button.focus,
 
 .comment h4::after {
     content: '\ef9a';
-    font-family: IcoFont!important;
+    font-family: IcoFont !important;
     margin-inline-start: 10px;
     font-size: 10px;
 }
@@ -2744,8 +2750,16 @@ button.focus,
 }
 
 .field {
-    margin-top: 20px;
+    margin-top: 30px;
     position: relative;
+}
+
+.icon-field .field-control {
+    padding-inline-end: 40px;
+}
+
+.button-field .field-control {
+    padding-inline-end: 60px;
 }
 
 .field-label {
@@ -2758,17 +2772,20 @@ button.focus,
 
 .field-control {
     background: rgba(253, 101, 0, 0.05);
-/* Main Color */
     border: 1px solid #FD6500;
     border-radius: 5px;
     display: block;
     width: 100%;
     font-size: 14px;
+    padding: 15px;
 }
 
 textarea.field-control {
     resize: none;
-    padding: 15px;
+}
+
+input.field-control {
+    padding: 14px 15px;
 }
 
 .field-control::placeholder {
@@ -2779,8 +2796,6 @@ textarea.field-control {
     border-color: #2A037A;
 }
 
-textarea.field-control {}
-
 .field-icon {
     position: absolute;
     top: 40px;
@@ -2788,7 +2803,15 @@ textarea.field-control {}
     cursor: pointer;
 }
 
-.field-icon:hover img {
+.upload-images input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
 }
 
 .uploaded-images {
@@ -2807,6 +2830,9 @@ textarea.field-control {}
     border: 1px solid #ECECEC;
     border-radius: 5px;
     overflow: hidden;
+    margin-inline-end: 15px;
+    margin-bottom: 15px;
+    background: rgba(253, 101, 0, 0.05);
 }
 
 .delete-image {
@@ -2829,9 +2855,167 @@ textarea.field-control {}
     background: #2A037A;
 }
 
-input.field-control {
-    padding: 13px 15px;
+.payment-radio {
+    position: relative;
 }
+
+.payment-radio input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.payment-radio label {
+    background: rgba(253, 101, 0, 0.05);
+    border: 1px solid #FD6500;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    padding: 14px 15px;
+    color: #666666;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.payment-radio img {
+    margin-inline-end: 15px;
+}
+
+.payment-radio input:checked~label {
+    background: #FD6500;
+    color: #fff;
+}
+
+.apply-coupon {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 15px;
+    color: #FD6500;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 26px;
+    max-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.apply-coupon i {
+    display: none;
+}
+
+.apply-coupon.success {
+    color: #5DC351;
+}
+
+.apply-coupon.success span {
+    display: none;
+}
+
+.apply-coupon.success i {
+    display: block;
+    font-size: 30px;
+}
+
+.discount-total {
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 24px;
+    color: #222222;
+    display: none;
+}
+
+.discount-total span {
+    color: #5DC351;
+    margin: 0 5px;
+}
+
+.single-service-page .btn {
+    margin-top: 40px;
+    width: 200px;
+}
+
+.single-service-page .btn img {
+    margin-inline-start: 10px;
+}
+
+.map {
+    width: 100%;
+    height: 300px;
+    display: none;
+}
+
+@media screen and (max-width:768px) {}
+
+/*==========================||---------------------------||========================*/
+/*==========================||       Custom Modal        ||========================*/
+/*==========================||---------------------------||========================*/
+
+.custom-modal .modal-content {
+    padding: 30px;
+    text-align: center;
+}
+
+.modal-vector {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.custom-modal  h2 {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 37px;
+    color: #222222;
+}
+
+.custom-modal p {
+    font-size: 16px;
+    line-height: 24px;
+    color: #666666;
+}
+
+.custom-modal .btn {
+    width: fit-content;
+    min-width: 150px;
+    margin: 20px auto 10px;
+}
+
+@media screen and (max-width:768px) {}
+
+/*==========================||---------------------------||========================*/
+/*==========================||         Animation         ||========================*/
+/*==========================||---------------------------||========================*/
+
+
+@media screen and (max-width:768px) {}
+
+/*==========================||---------------------------||========================*/
+/*==========================||         Animation         ||========================*/
+/*==========================||---------------------------||========================*/
+
+
+@media screen and (max-width:768px) {}
+
+/*==========================||---------------------------||========================*/
+/*==========================||         Animation         ||========================*/
+/*==========================||---------------------------||========================*/
+
+
+@media screen and (max-width:768px) {}
+
+/*==========================||---------------------------||========================*/
+/*==========================||         Animation         ||========================*/
+/*==========================||---------------------------||========================*/
+
 
 @media screen and (max-width:768px) {}
 
