@@ -303,7 +303,21 @@
     $('.upload-images').on('change', (ev) => {
         if (!ev.target.files) return; 
         [...ev.target.files].forEach(preview);
+        $('.uploaded-images').show();
     });
+
+
+    // Delivery Modal 
+    let deliveryModal = document.getElementById('deliveryModal');
+    if(deliveryModal) $(deliveryModal).modal('show');
+
+    $('.deliveryRadio').change(function() {
+        if(this.checked) {
+            $('.delivery-radio').removeClass('active');
+            $(this).parents('.delivery-radio').addClass('active');
+        }
+    });
+    
 
 
     

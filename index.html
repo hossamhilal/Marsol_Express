@@ -740,6 +740,128 @@
         </div>
     </div>
 
+    <!-- Delivery Modal -->
+    <div class="modal fade custom-modal delivery-modal" id="deliveryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <h3> حدد طريقة التسليم </h3>
+                <p> برجاء تحددي طريقة تسليم الطلب التي تريدها </p>
+
+                <div class="field">
+                    <label class="field-label"> نوع التوصيل * </label>
+                    <div class="delivery-type">
+                        <div class="delivery-radio active">
+                            <div class="custom-radio">
+                                <input type="radio" name="filter" class="deliveryRadio" checked>
+                                <label></label>
+                            </div>
+                            <span> توصيل </span>
+                        </div>
+                        <div class="delivery-radio">
+                            <div class="custom-radio">
+                                <input type="radio" name="filter" class="deliveryRadio">
+                                <label></label>
+                            </div>
+                            <span> إستلام من الفرع  </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="field-label"> حدد الفرع </label>
+                    <select class="field-control">
+                        <option value="1"> برجاء تحديد الفرع </option>
+                        <option value="2"> 2 فرع </option>
+                        <option value="3"> 3 فرع </option>
+                        <option value="4"> 4 فرع </option>
+                        <option value="5"> 5 فرع </option>
+                    </select>
+                </div>
+                <div class="field icon-field">
+                    <label class="field-label"> تحديد الموقع </label>
+                    <input class="field-control" placeholder="برجاء تحديد موقع التسليم" id="delivery-location"></input>
+                    <div class="field-icon open-map" id="open-delivery-map" data-map="delivery-map"> <img src="images/icon-map.svg" alt="upload" class="img-fluid"> </div>
+                </div>
+                <div class="map" id="delivery-map"></div>
+                <button class="btn btn-primary" type="button" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target="#offerModal"> <span> تأكيد </span> <img src="images/icon-left-white.svg" alt="icon"> </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Offer Modal -->
+    <div class="modal fade custom-modal offer-modal" id="offerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="row">
+                    <div class="col-12 col-sm-7 col-lg-6">
+                        <div class="offer-modal-content">
+                            <label> خصم </label>
+                            <div class="offer-price">
+                                <h1> 100 </h1>
+                                <span> ريال </span>
+                            </div>
+                            <p> إطلب كل اللى تحتاجه من قسم المتاجر واشتفيد بخصم 100 ريال </p>
+
+                            <a href="#" class="btn btn-primary"> <span> إطلب الحين </span> <img src="images/icon-left-white.svg" alt="icon"> </a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-5  col-lg-6">
+                        <div class="offer-modal-vector">
+                            <img src="images/offer.svg" alt="offer" class="img-fluid w-100 h-100">
+                        </div>
+                    </div>
+                </div>
+                <div class="close-modal" data-dismiss="modal" aria-label="Close"> <i class="icofont-close-line"></i> </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('open-delivery-map').addEventListener('click', function(){
+            let mapID = '#'+$(this).data('map');
+            $(mapID).toggle();
+        },false);
+
+        function initMap() {
+            let LatLng = new google.maps.LatLng(23.8859, 45.0792);
+
+            map   = new google.maps.Map(document.getElementById('delivery-map'), { zoom: 13});
+
+            let position;
+            let marker;
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    position = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+
+                    map.setCenter(position);
+
+                    marker = new google.maps.Marker({
+                        position: position,
+                        map: map
+                    });
+                }, function() {
+                    map.setCenter(LatLng);
+                });
+            }
+            else {
+                map.setCenter(LatLng);
+            }
+
+            // Configure the click listener.
+            map.addListener("click", (mapsMouseEvent) => {
+                position = {
+                    lat:  mapsMouseEvent.latLng.lat(),
+                    lng: mapsMouseEvent.latLng.lng()
+                };
+                document.getElementById('delivery-location').value = mapsMouseEvent.latLng.lat() , mapsMouseEvent.latLng.lng();
+                marker.setPosition(position);
+            });;          
+        }  
+    </script>
+
 
     <!-- JS -->
     <script src="js/jquery-3.2.1.min.js"></script>
@@ -747,6 +869,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="plugins/owlCarousel/owl.carousel.min.js"></script>
     <script src="plugins/animation/wow.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOpPAuGzuOlz-iIlF46dskF-lq1duFLDE&callback=initMap" async></script>
     <script src="js/custom.js"></script>
 
 </body>

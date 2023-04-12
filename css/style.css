@@ -419,12 +419,21 @@ button.focus,
     .headerNav {
         position: fixed;
         top: 0;
-        left: 0;
         height: 100vh;
         width: 250px;
         background: #fff;
         z-index: 999;
         transition: all 0.7s ease-in-out;
+        transform: translateX(-100%);
+    }
+
+    .ar .headerNav {
+        right: 0;
+        transform: translateX(100%);
+    }
+
+    .en .headerNav {
+        left: 0;
         transform: translateX(-100%);
     }
 
@@ -597,11 +606,11 @@ button.focus,
 }
 
 .header-slider .owl-prev {
-    left: -120px;
+    left: -90px;
 }
 
 .header-slider .owl-next {
-    right: -120px;
+    right: -90px;
 }
 
 
@@ -1995,8 +2004,60 @@ button.focus,
     z-index: 1;
 }
 
-@media screen and (max-width:768px) {}
+@media screen and (max-width:575px) {
+    .page-filter {
+        flex-wrap: wrap;
+    }
+    
+    .page-filter .page-search {
+        margin-top: 10px;
+    }
+}
 
+@media screen and (max-width:768px) {
+    .breadCrumb h2 {
+        font-size: 15px;
+        margin: 0;
+    }
+    
+    .restaurant-content {
+        margin: 20px 0 0 0;
+        width: 100%;
+        padding: 15px;
+    }
+    
+    .restaurant-details-note {
+        font-size: 13px;
+        margin-bottom: 10px;
+    }
+    
+    .page-side {
+        margin-bottom: 20px;
+    }
+}
+
+@media (min-width:768px) and (max-width:1024px) {
+    .restaurant-details-block h3 {
+        font-size: 15px;
+    }
+    
+    .restaurant-details-block h6 {
+        font-size: 13px;
+    }
+    
+    .restaurant-details .col-6 {
+        padding: 0;
+    }
+    
+    .restaurant-info h5 {
+        font-size: 12px;
+    }
+    
+    .restaurant-logo {
+        width: 65px;
+        height: 65px;
+    }
+}
 /*==========================||---------------------------||========================*/
 /*==========================||   custom Radio - check    ||========================*/
 /*==========================||---------------------------||========================*/
@@ -2167,7 +2228,26 @@ button.focus,
     outline: 0;
 }
 
-@media screen and (max-width:768px) {}
+@media screen and (max-width:768px) {
+    .service-header {
+        padding: 15px;
+    }
+
+    .service-header h2 {
+        font-size: 16px;
+        line-height: 40px;
+    }
+    
+    .service-header h4 {
+        font-size: 13px;
+    }
+    
+    .service-header-vector {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
 
 
 /*==========================||---------------------------||========================*/
@@ -2248,7 +2328,45 @@ button.focus,
     display: none;
 }
 
-@media screen and (max-width:768px) {}
+.list-col .restaurent-item {
+    flex-direction: row;
+}
+
+.list-col .restaurent-item-head {
+    width: 185px;
+    height: 185px;
+    border-radius: 0;
+}
+
+@media screen and (max-width:575px) {
+    .list-col .restaurent-item-head {
+        width: 130px;
+        height: 130px;
+        border-radius: 0;
+    }
+
+    .list-col  .discount {
+        display: block;
+        margin-inline-start: 10px;
+        font-size: 13px;
+    }
+    
+    .list-col .discount-price {
+        flex-wrap: wrap;
+    }
+    
+    .list-col .restaurent-item-body {
+        padding: 10px;
+    }
+    
+    .list-col  .restaurent-item p {
+        display: none;
+    }
+    
+    .list-col  .price {
+        margin: 0;
+    }
+}
 
 /*==========================||---------------------------||========================*/
 /*==========================||          Product          ||========================*/
@@ -2660,7 +2778,85 @@ button.focus,
     border-bottom: 1px solid #EEEEEE;
 }
 
-@media screen and (max-width:768px) {}
+@media screen and (max-width:575px) {
+    .product-slider {
+        padding: 15px;
+    }
+
+    .product-slider .item  {
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .product-slider .item img {
+        max-width: 100%;
+    }
+
+    .product-slider .owl-nav>*{
+        top: calc( 100% - 40px);
+    }
+
+    .product-count {
+        margin: 0 auto 20px;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .product-details h1 {
+        font-size: 20px;
+        line-height: 2;
+    }
+
+    .product-details {
+        padding: 15px;
+    }
+    
+    .product-details-cart {
+        flex-wrap: wrap;
+    }
+    .tab-item {
+        font-size: 14px;
+    }
+    
+    .tabs-content h3 {
+        font-size: 15px;
+    }
+    
+    .tabs-content li {
+        font-size: 13px;
+        line-height: 1.7;
+    }
+    
+    .product-rate {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .product-rate-item {
+        margin-bottom: 13px;
+    }
+    
+    .progress {
+        height: 7px;
+    }
+    
+    .product-rate-list {
+        margin-bottom: 30px;
+    }
+    
+}
+
+@media (min-width:768px) and (max-width:992px) {
+    .product-page-wrapper .col-12 {
+        padding: 0 5px;
+    }
+    
+    .feature {
+        padding: 5px 0;
+    }
+}
 
 @media (min-width:1024px) {
     .product-slider .item {
@@ -2815,6 +3011,7 @@ input.field-control {
 }
 
 .uploaded-images {
+    display: none;
     margin-top: 30px;
 }
 
@@ -2951,7 +3148,32 @@ input.field-control {
     display: none;
 }
 
-@media screen and (max-width:768px) {}
+@media screen and (max-width:575px) {
+    .single-service-header {
+        flex-direction: column;
+    }
+    
+    .single-service-logo {
+        margin: 0 auto 20px;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .single-service-header h2 {
+        font-size: 16px;
+    }
+    
+    .single-service-header h5 {
+        font-size: 13px;
+    }
+
+    .uploaded-image {
+        width: 100px;
+        height: 100px;
+        margin-inline-end: 10px;
+        margin-bottom: 10px;
+    }
+}
 
 /*==========================||---------------------------||========================*/
 /*==========================||       Custom Modal        ||========================*/
@@ -2992,25 +3214,421 @@ input.field-control {
 @media screen and (max-width:768px) {}
 
 /*==========================||---------------------------||========================*/
-/*==========================||         Animation         ||========================*/
+/*==========================||        Search Page        ||========================*/
 /*==========================||---------------------------||========================*/
 
+.filter-wrapper .page-filter {
+    margin-bottom: 15px;
+}
+
+.filter-result {
+    min-width: fit-content;
+    margin-inline-end: 15px;
+    font-size: 14px;
+    line-height: 22px;
+    color: #666666;
+}
+
+.filter-options-wrapper {
+    background: #fff;
+    padding: 10px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+}
+
+.filter-options {
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.filter-radio {
+    width: 25%;
+    border-radius: 0;
+}
+
+.filter-radio  label {
+    border-radius: 0;
+    border: 0;
+    justify-content: center;
+    background: #F8F8F8;
+    margin: 0;
+}
+
+.search-group {
+    position: relative;
+    padding-top: 20px;
+    margin-bottom: 40px;
+}
+
+.search-group  >  h3 {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    color: #222222;
+    margin-bottom: 10px;
+    border-inline-start: 3px solid #EA0A2A;
+    padding-inline-start: 10px;
+}
+
+.search-group .col-12 {
+    padding: 15px;
+}
+
+.load-more {
+    position: absolute;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.62) 41.67%, #FFFFFF 100%);
+    height: 280px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    width: 100%;
+    padding-bottom: 30px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 26px;
+    color: #000000;
+}
+
+.load-more-btn {
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+
+.load-more-btn:hover {
+    color: #FD6500;
+}
+
+.search-group .store-offer {
+    font-size: 13px;
+}
+
+.search-group .service-note {
+    font-size: 13px;
+}
+
+.search-group .store-body {
+    padding: 45px 20px 20px;
+}
+
+.search-group .store-logo {
+    width: 65px;
+    height: 65px;
+}
+
+.search-group .store-body h2 {
+    font-size: 14px;
+}
+
+.search-group .service-block h2 {
+    margin-bottom: 2px;
+}
+
+.search-group .store-body h5 {
+    font-size: 13px;
+}
+
+.search-group .store-footer p {
+    padding: 7px 10px;
+    font-size: 13px;
+}
+
+
+
+
+@media screen and (max-width:575px) {
+}
+
+@media screen and (max-width:768px) {
+    .filter-radio label {
+        font-size: 13px;
+    }
+    
+    .restaurent-item h3 {
+        font-size: 14px;
+    }
+
+    .search-group .list-col .store-body {
+        padding: 15px;
+    }
+}
+
+
+/*==========================||---------------------------||========================*/
+/*==========================||         Home Modal         ||========================*/
+/*==========================||---------------------------||========================*/
+
+.delivery-modal {
+    text-align: initial;
+}
+
+.delivery-modal .modal-content {
+    text-align: initial;
+}
+
+.delivery-modal  h3 {
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 34px;
+    color: #222222;
+    margin: 0;
+}
+
+.delivery-modal h3::before {
+    content: '';
+    width: 3px;
+    height: 15px;
+    background: #FD6500;
+    display: inline-flex;
+    margin-inline-end: 6px;
+}
+
+.delivery-modal  p {
+    font-size: 15px;
+    line-height: 22px;
+    color: #666666;
+    padding-inline-start: 10px;
+}
+
+.delivery-type {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.delivery-radio {
+    display: flex;
+    align-items: center;
+    width: calc(50% - 10px);
+    height: 45px;
+    padding: 0 15px;
+    background: #FAFAFA;
+    border: 1px solid #DFDFDF;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #222222;
+    font-weight: 500;
+}
+
+.delivery-radio.active {
+    border-color: #FD6500;
+}
+
+.delivery-radio .custom-radio {
+    margin-inline-end: 14px;
+}
+
+.delivery-modal .field-control {
+    background: #FAFAFA;
+    border-color: #DFDFDF;
+}
+
+.delivery-modal  .btn {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.offer-modal  .modal-content {
+    padding: 0;
+}
+
+.offer-modal .row {
+    margin: 0;
+}
+
+.offer-modal .col-12 {
+    padding: 0;
+}
+
+.offer-modal-content {
+    background: #2A037A;
+    padding: 100px 30px;
+    color: #fff;
+}
+
+.offer-modal  label {
+    font-size: 20px;
+}
+
+.offer-modal  .offer-price {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+}
+
+.offer-modal  h1 {
+    font-size: 100px;
+    line-height: 128px;
+    font-weight: 700;
+}
+
+.offer-modal .offer-price span {
+    margin-inline-start: 10px;
+}
+
+.offer-modal p {
+    color: inherit;
+    font-size: 18px;
+    line-height: 36px;
+}
+
+.offer-modal .btn::after , .offer-modal .btn::before {
+    background: #F2444D;
+}
+
+.offer-modal .btn:hover {
+    border-color: #F2444D;
+}
+
+.offer-modal-vector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.close-modal {
+    font-size: 20px;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    border: 1px solid #FD6500;
+    color: #FD6500;
+    border-radius: 50px;
+    background: #FFFFFF;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+
+.close-modal:hover {
+    background: #FD6500;
+    color: #fff;
+}
+
+@media screen and (max-width:575px) {
+    .delivery-modal .modal-content {
+        padding: 15px;
+    }
+    
+    .offer-modal .row {
+        flex-direction: column-reverse;
+    }
+    
+    .offer-modal-vector {
+        height: 300px;
+    }
+
+    .offer-modal-content {
+        padding: 15px;
+    }
+    
+    .offer-modal h1 {
+        font-size: 55px;
+        line-height: 70px;
+    }
+}
+
+@media (min-width:768px) and (max-width:992px) {
+    .delivery-modal .modal-dialog {
+        max-width: 600px;
+    }
+
+    .offer-modal .modal-dialog {
+        max-width: 700px;
+    }
+}
+
+@media (min-width:1024px) {
+    .delivery-modal .modal-dialog {
+        max-width: 700px;
+    }
+
+    .offer-modal .modal-dialog {
+        max-width: 900px;
+    }
+}
+
+/*==========================||---------------------------||========================*/
+/*==========================||         language          ||========================*/
+/*==========================||---------------------------||========================*/
+
+.en {
+    direction: ltr;
+    text-align: left;
+    font-family: sans-serif;
+}
+
+.en .search-form .btn i {
+    transform: rotate(180deg);
+    margin-inline-start: 10px;
+    margin-inline-end: 0;
+}
+
+.en .btn img {
+    transform: rotate(180deg);
+    margin-inline-start: 10px;
+    margin-inline-end: 0;
+}
+
+.en .service::after {
+    left: 100%;
+}
+
+.en .store-offer {
+    left: 10px;
+    right: auto;
+}
+
+.en .service-note {
+    left: 0;
+    right: initial;
+}
+
+.en .store .rate {
+    left: auto;
+    right: 20px;
+}
+
+.en .footer-block a::before {
+    content: '\ea7c';
+}
+
+.en .restaurant-actions {
+    right: 20px;
+    left: auto;
+}
+
+.en .trader-link .left-icon ,
+.en .page-link .icofont-rounded-left ,
+.en .page-link .icofont-rounded-right {
+    transform: rotate(180deg);
+}
+
+.en .field-icon {
+    right: 15px;
+    left: auto;
+}
+
+.en .delete-image {
+    right: 10px;
+    left: auto;
+}
+
+.en .apply-coupon {
+    right: 0;
+    left: auto;
+}
 
 @media screen and (max-width:768px) {}
 
-/*==========================||---------------------------||========================*/
-/*==========================||         Animation         ||========================*/
-/*==========================||---------------------------||========================*/
 
-
-@media screen and (max-width:768px) {}
-
-/*==========================||---------------------------||========================*/
-/*==========================||         Animation         ||========================*/
-/*==========================||---------------------------||========================*/
-
-
-@media screen and (max-width:768px) {}
 
 /*==========================||---------------------------||========================*/
 /*==========================||         Animation         ||========================*/
