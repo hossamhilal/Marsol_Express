@@ -3186,10 +3186,11 @@ input.field-control {
 
 .modal-vector {
     height: 120px;
+    width: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
+    margin: 0 auto 20px;
 }
 
 .custom-modal  h2 {
