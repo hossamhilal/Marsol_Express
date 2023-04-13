@@ -3798,6 +3798,12 @@ input.field-control {
     font-size: 12px;
 }
 
+.coupon input:focus , 
+.coupon input:active {
+    outline: 0;
+    box-shadow: none;
+}
+
 .couponBtn {
     width: 70px;
     background: var(--green);

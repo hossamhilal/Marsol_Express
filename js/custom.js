@@ -325,6 +325,20 @@
         $(this).parent().hasClass('lineProduct') ? $(this).parent().remove() : $(this).parents('tr').remove() ;
     });
 
+
+    // coupon
+    $('.couponBtn').on('click' , function(){
+        $(this).addClass('loadingBtn');
+        setTimeout(function () {
+            $('.couponBtn').removeClass('loadingBtn');
+            $('.coupon').addClass('applied');
+            // $('.coupon').addClass('failed');
+            $('.coupon').hasClass('applied') ? $(this).find('i').addClass('icofont-check-alt').removeClass('icofont-close-line') : $(this).find('i').addClass('icofont-close-line').removeClass('icofont-check-alt');
+        }, 600);
+
+        $('.coupon').hasClass('applied') ? $('.couponMessage').text('تم تفعيل الكوبون بنجاح ') : $('.couponMessage').text('الرمز الذي أدخلته غير صالح');
+    });
+
     
 
 
