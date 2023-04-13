@@ -3664,8 +3664,8 @@ input.field-control {
 }
 
 .cartTable .productImg {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -3926,12 +3926,17 @@ input.field-control {
 }
 
 @media screen and (max-width:767px) {
+    .cartTable h3 {
+        padding: 0;
+    }
+
     .cartTable thead {
         display: none;
     }
 
     .table td:first-of-type {
-        padding: 5px 10px;
+        position: absolute;
+        padding: 0;
     }
 
     .cartTable td:nth-child(2) {
@@ -3946,7 +3951,8 @@ input.field-control {
 
     .cartTable td:nth-child(4) {
         order: 3;
-        width: 90px;
+        width: 120px;    
+        padding: 0;
     }
 
     .cartTable td:nth-child(5) {
@@ -3957,18 +3963,22 @@ input.field-control {
         margin-top: auto;
     }
 
-    .cartTable td:nth-child(6) {
-        order: 5;
-        width: 70px;
-        width: 33%;
-        padding: 0 10px;
+    .cartTable .product-count {
+        width: 120px;
         height: 35px;
-        margin-top: auto;
+        margin: 10px 0;
     }
 
-    .cartTable .count {
-        width: 90px;
-        height: 35px;
+    
+    
+    .cartTable .table td {
+        border: 0;
+        bottom: 10px;
+        left: 0;
+    }
+    
+    .cartTable tr {
+        position: relative;
     }
 }
 
