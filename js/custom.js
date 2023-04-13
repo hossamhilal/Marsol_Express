@@ -188,12 +188,13 @@
      
     // Cart Count
     $('.count-btn').on('click', function () {
-        let number = $('.count-number').val();
+        let count = $(this).parent('.product-count').find('.count-number');
+        let number = count.val();
         if($(this).hasClass('plus-btn')){
             number++;
         }
         else number == 0 ? '' : number--;
-        $('.count-number').val(number);
+        count.val(number);
     });
 
     // Count Down 
@@ -319,6 +320,10 @@
     });
     
 
+    // Remove Product 
+    $('.removeProduct').on('click' , function(){
+        $(this).parent().hasClass('lineProduct') ? $(this).parent().remove() : $(this).parents('tr').remove() ;
+    });
 
     
 
